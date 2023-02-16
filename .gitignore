@@ -1,6 +1,6 @@
 node_modules/
 .expo/
-.txt
+token.txt
 dist/
 npm-debug.*
 *.jks
