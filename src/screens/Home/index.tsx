@@ -1,6 +1,8 @@
 
 import { Text, View, TextInput, TouchableOpacity } from "react-native";
 
+import {Participant} from '../../components/Participant';
+
 import { styles } from "./style";
 
 export function Home() {
@@ -37,6 +39,11 @@ export function Home() {
 
       </View>
 
+      <Participant name="Anderson Francisco"/>
+
+      <Participant name="Telmo Pegado"/>
+
+      <Participant name="Penda Karime"/>
 
     </View>
   )
