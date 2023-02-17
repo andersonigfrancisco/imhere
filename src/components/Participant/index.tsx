@@ -5,14 +5,14 @@ import { styles } from './styles'
 type  props = {
 
   name:string
+
+  onRemove: () =>void
 }
 
 
-export function Participant({name}:props) {
+export function Participant({name,onRemove}:props) {
 
-  function handleParticipantAdd(){
-    console.log("Remover partipante")
-  }
+  
 
   return (
 
@@ -22,7 +22,7 @@ export function Participant({name}:props) {
         {name}
       </Text>
 
-      <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
+      <TouchableOpacity style={styles.button} onPress={onRemove}>
         <Text style={styles.buttonText}>
           -
         </Text>
