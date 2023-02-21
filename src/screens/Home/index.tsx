@@ -1,4 +1,6 @@
 
+import React,{useState} from "react";
+
 import { Text, View, TextInput, TouchableOpacity, FlatList, Alert } from "react-native";
 
 import { Participant } from '../../components/Participant';
@@ -7,14 +9,25 @@ import { styles } from "./style";
 
 export function Home() {
 
-  const partipants = ["Anderson", "Telmo", "Penda", "Gildo", "Ariane", "Luis", "Jonce"]
+  const [partipants,setPartipants] = useState<string[]>([])
+
+  const [participantName,setParticipantName] = useState('')
+
+  
 
   function handleParticipantAdd() {
 
-    if(partipants.includes("Anderson")){
+    if(partipants.includes(participantName)){
       return  Alert.alert("Participante existe", "Já existe um participante na lista com esse nome.");
     }
-    console.log("Você clicou no botão de Adicionar!");
+
+    if(participantName===''){
+      return  Alert.alert("Aviso", "Nome de Participante");
+    }
+
+    setPartipants(prevState=>[...prevState,participantName])
+    setParticipantName('')
+
   }
 
   function handleParticipantRemove(name: string) {
@@ -45,9 +58,10 @@ export function Home() {
 
         <TextInput
           style={styles.input}
-
           placeholder="Nome do participante"
           placeholderTextColor="#6B6B6B"
+          onChangeText={setParticipantName}
+          value={participantName}
         />
 
         <TouchableOpacity style={styles.button} onPress={handleParticipantAdd}>
@@ -73,7 +87,7 @@ export function Home() {
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
           <Text style={styles.listEmptyText}>
-            Não foi adicionado nenhum participante ao evento!
+           Ninguém chegou no evento ainda? Adicione participantes a sua lista de presença.
           </Text>
         )}
       />
