@@ -5,7 +5,6 @@ import { styles } from './styles'
 type  props = {
 
   name:string
-
   onRemove: () =>void
 }
 
